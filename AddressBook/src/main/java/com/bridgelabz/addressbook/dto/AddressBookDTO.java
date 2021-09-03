@@ -12,11 +12,11 @@ public @Data class AddressBookDTO {
 	
 	public String phone_no;
 	
-	private String city;
+	public String city;
 	
-	private String state;
+	public String state;
 	
-	private String zip_code;
+	public String zip_code;
 
 	@Override
 	public String toString() {
