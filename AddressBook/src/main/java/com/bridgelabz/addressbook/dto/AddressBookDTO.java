@@ -6,32 +6,25 @@ import javax.validation.constraints.Pattern;
 import lombok.Data;
 
 public @Data class AddressBookDTO {
-	
-	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "Employee first_name Invalid")
+
+	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "{addressbook.error.firstname}")
 	public String first_name;
-	
-	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "Employee last_name Invalid")
+
+	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "{addressbook.error.firstname}")
 	public String last_name;
-	
-	@Pattern(regexp = "male|female", message = "gender needs to be male or female")
+
+	@Pattern(regexp = "male|female", message = "{addressbook.error.gender}")
 	public String gender;
-	
-	@Pattern(regexp = "^(0/91)?[7-9][0-9]{9}$", message = "phone no should be of 10 digit")
+
+	@Pattern(regexp = "^(0/91)?[7-9][0-9]{9}$", message = "{addressbook.error.phoneno}")
 	public String phone_no;
-	
-	@NotBlank
+
+	@NotBlank(message = "{addressbook.error.city}")
 	public String city;
-	
-	@NotBlank
+
+	@NotBlank(message = "{addressbook.error.state}")
 	public String state;
-	
-	@Pattern(regexp = "^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$", message = "zip code is not valid")
+
+	@Pattern(regexp = "^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$", message = "{addressbook.error.zipcode}")
 	public String zip_code;
-
-
-	@Override
-	public String toString() {
-		return "AddressBookDTO [first_name=" + first_name + ", last_name=" + last_name + ", gender=" + gender
-				+ ", phone_no=" + phone_no + ", city=" + city + ", state=" + state + ", zip_code=" + zip_code + "]";
-	}
 }
