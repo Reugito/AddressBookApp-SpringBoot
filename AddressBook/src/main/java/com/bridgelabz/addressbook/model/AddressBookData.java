@@ -13,11 +13,11 @@ import lombok.Data;
 @Entity
 @Table(name = "addressbook")
 public @Data class AddressBookData {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int person_id;
-	
+
 	private String first_name;
 	private String last_name;
 	private String gender;
@@ -25,15 +25,17 @@ public @Data class AddressBookData {
 	private String city;
 	private String state;
 	private String zip_code;
-	
-	public AddressBookData() {}
-	
+
+	public AddressBookData() {
+	}
+
 	public AddressBookData(AddressBookDTO addressBookDTO) {
 		this.updateAddressBookData(addressBookDTO);
 
 	}
+
 	public void updateAddressBookData(AddressBookDTO addressBookDTO) {
-		
+
 		this.first_name = addressBookDTO.first_name;
 		this.last_name = addressBookDTO.last_name;
 		this.gender = addressBookDTO.gender;
@@ -41,6 +43,6 @@ public @Data class AddressBookData {
 		this.city = addressBookDTO.city;
 		this.state = addressBookDTO.state;
 		this.zip_code = addressBookDTO.zip_code;
-		
+
 	}
 }
