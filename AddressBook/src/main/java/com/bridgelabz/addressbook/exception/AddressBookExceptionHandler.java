@@ -15,14 +15,12 @@ import com.bridgelabz.addressbook.dto.ResponseDTO;
 @ControllerAdvice
 public class AddressBookExceptionHandler {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<ResponseDTO> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception){
+	public ResponseEntity<ResponseDTO> handleMethodArgumentNotValidException(
+			MethodArgumentNotValidException exception) {
 		List<ObjectError> errorList = exception.getBindingResult().getAllErrors();
-		List<String> errMsg = errorList.stream()
-				.map(objErr -> objErr.getDefaultMessage()).collect(Collectors.toList());
+		List<String> errMsg = errorList.stream().map(objErr -> objErr.getDefaultMessage()).collect(Collectors.toList());
 		ResponseDTO respDTO = new ResponseDTO("Rest Call:", errMsg);
 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.BAD_REQUEST);
 	}
-	
-	
 
 }
