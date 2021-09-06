@@ -11,7 +11,7 @@ import com.bridgelabz.addressbook.repository.AddressBookRepository;
 
 @Service
 public class AddressBookServices implements IAddressBookServices {
-	
+
 	@Autowired
 	AddressBookRepository addressBookRepo;
 
@@ -23,19 +23,21 @@ public class AddressBookServices implements IAddressBookServices {
 		return addressBookRepo.findAll();
 	}
 
-	/** 
+	/**
 	 * accepts the person id
+	 * 
 	 * @param personId
-	 * @return list of AddressBook details from DB 
+	 * @return list of AddressBook details from DB
 	 */
 	@Override
 	public AddressBookData getAddressBookDataById(int personId) {
 		return addressBookRepo.findById(personId).orElse(null);
 	}
-	
+
 	/**
-	 * accepts the person details in the form 
-	 * of AddressBookDTO and stores it in List
+	 * accepts the person details in the form of AddressBookDTO and stores it in
+	 * List
+	 * 
 	 * @param addressBookDTO
 	 * @return accepted addressBookData object
 	 */
@@ -44,10 +46,11 @@ public class AddressBookServices implements IAddressBookServices {
 		AddressBookData addressBookData = new AddressBookData(addressBookDTO);
 		return addressBookRepo.save(addressBookData);
 	}
-	
+
 	/**
-	 * accepts the person id and new person details in the form 
-	 * of AddressBookDTO and stores it in List
+	 * accepts the person id and new person details in the form of AddressBookDTO
+	 * and stores it in List
+	 * 
 	 * @param personId
 	 * @param addressBookDTO
 	 * @return updated addressBookData object
@@ -61,6 +64,7 @@ public class AddressBookServices implements IAddressBookServices {
 
 	/**
 	 * deletes the data that matches the person id from DB
+	 * 
 	 * @param personId
 	 */
 	@Override
