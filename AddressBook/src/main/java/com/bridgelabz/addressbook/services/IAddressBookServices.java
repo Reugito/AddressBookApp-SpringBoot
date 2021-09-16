@@ -7,9 +7,15 @@ import com.bridgelabz.addressbook.model.AddressBookData;
 
 public interface IAddressBookServices {
 
-	List<AddressBookData> getEmployeePayrollData();
+	List<AddressBookData> getAddressBookData();
+	
+	List<AddressBookData> findByName(String name);
+	
+	AddressBookData VerifyIdPass(String email, String pass);
 	
 	AddressBookData getAddressBookDataById(int personId);
+	
+	List<AddressBookData>sortByName(String name);
 	
 	AddressBookData createAddressBookData(AddressBookDTO AddressBookDTO);
 	

@@ -3,6 +3,7 @@ package com.bridgelabz.addressbook.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.addressbook.dto.AddressBookDTO;
@@ -19,8 +20,19 @@ public class AddressBookServices implements IAddressBookServices {
 	 * @return list of AddressBook details from DB
 	 */
 	@Override
-	public List<AddressBookData> getEmployeePayrollData() {
+	public List<AddressBookData> getAddressBookData() {
 		return addressBookRepo.findAll();
+	}
+	
+	@Override
+	public List<AddressBookData> sortByName(String name) {
+		return addressBookRepo.findAll(Sort.by(name).ascending());
+	}
+	
+	@Override
+	public AddressBookData VerifyIdPass(String email, String pass) {
+		
+		return addressBookRepo.VerifyIdPass(email, pass);
 	}
 
 	/**
@@ -33,6 +45,12 @@ public class AddressBookServices implements IAddressBookServices {
 	public AddressBookData getAddressBookDataById(int personId) {
 		return addressBookRepo.findById(personId).orElse(null);
 	}
+	
+	@Override
+	public  List<AddressBookData> findByName(String name) {
+		return addressBookRepo.findByName(name);
+	}
+	
 
 	/**
 	 * accepts the person details in the form of AddressBookDTO and stores it in
